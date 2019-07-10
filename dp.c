@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #define Content_N 10000
-#define Max_V 200
+#define Max_V 10000
 #define BUF_SIZE 16
+
+int cost[Content_N][2];
+int ans[Content_N+1][Max_V+1];
 
 /*-------------- Function ------------------------*/
 int file_input(char [], int [][2]);
@@ -13,8 +17,6 @@ int max(int, int);
 int main(int argc, char *argv[]){
   int n, v;
   int i, j; //ループ変数
-  int cost[Content_N][2];
-  int ans[Content_N+1][Max_V+1];
   
   n = file_input(argv[1], cost);
   if(n == -1){
@@ -38,12 +40,12 @@ int main(int argc, char *argv[]){
   }
   
   printf("%d\n", ans[0][v]);
- 
+  
   return 0;
 }
 /*-------------------------------------------------*/
 
-int file_input(char filename[], int cost[][2]){
+int file_input(char filename[], int C[][2]){
   FILE *fp;
   int line = 0, ret;
   
@@ -53,7 +55,7 @@ int file_input(char filename[], int cost[][2]){
     return -1;
   }
 
-  while((ret=fscanf(fp, "%d,%d", &cost[line][0], &cost[line][1])) != EOF){   
+  while((ret=fscanf(fp, "%d,%d", &C[line][0], &C[line][1])) != EOF){   
     line++;
   }
   fclose(fp);
