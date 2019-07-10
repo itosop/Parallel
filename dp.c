@@ -17,6 +17,7 @@ int max(int, int);
 int main(int argc, char *argv[]){
   int n, v;
   int i, j; //ループ変数
+  clock_t start, end;
   
   n = file_input(argv[1], cost);
   if(n == -1){
@@ -24,6 +25,8 @@ int main(int argc, char *argv[]){
   }
 
   printf("Please input volume : "); scanf("%d", &v);
+
+  start = clock();
   
   for(j = 0; j <= v; j++){
     ans[n][j] = 0;
@@ -38,8 +41,11 @@ int main(int argc, char *argv[]){
       }
     }
   }
+
+  end = clock();
   
   printf("%d\n", ans[0][v]);
+  printf("%f (sec)\n", (double)(end-start)/CLOCKS_PER_SEC);
   
   return 0;
 }
