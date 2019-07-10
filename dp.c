@@ -26,7 +26,7 @@ int main(int argc, char *argv[]){
 
   printf("Please input volume : "); scanf("%d", &v);
 
-  start = clock();
+  start = clock(); //時間計測開始
   
   for(j = 0; j <= v; j++){
     ans[n][j] = 0;
@@ -43,7 +43,7 @@ int main(int argc, char *argv[]){
     }
   }
 
-  end = clock();
+  end = clock(); //時間計測終了
   
   printf("%d\n", ans[0][v]);
   printf("%f (sec)\n", (double)(end-start)/CLOCKS_PER_SEC);
